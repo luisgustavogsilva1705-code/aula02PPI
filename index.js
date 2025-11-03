@@ -10,7 +10,7 @@ server.use(express.urlencoded({extended: true}));
 
 
 
-server.get("/cadastro", (requisicao, resposta)=>{
+server.get("/", (requisicao, resposta)=>{
     resposta.send(`
           <!DOCTYPE html>
         <html>
@@ -24,7 +24,7 @@ server.get("/cadastro", (requisicao, resposta)=>{
                 </h1>
 
                 <div style="display: flex; justify-content: center; background-color: #f9f9f9; font-size: 18px; padding: 40px; border: 2px solid #2E8B57; border-radius: 12px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #333; width: 50%; margin: auto; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
-                    <form method="POST" action="/cadastro">
+                    <form method="POST" action="/">
 
                         <label for="nome">Nome:</label><br>
                         <input type="text" id="nome" name="nome" size="30" style="margin-bottom: 10px; padding: 5px; border: 1px solid #ccc; border-radius: 4px;"><br>
@@ -41,7 +41,7 @@ server.get("/cadastro", (requisicao, resposta)=>{
                         <button type="submit" style="background-color: #2E8B57; color: white; border: none; padding: 8px 20px; border-radius: 6px; cursor: pointer;">
                             Enviar
                         </button>
-                        
+
                     </form>
                 </div>
                 
@@ -50,7 +50,7 @@ server.get("/cadastro", (requisicao, resposta)=>{
         `);
 });
 
-server.post('/cadastro', (requisicao, resposta) =>{
+server.post('/', (requisicao, resposta) =>{
     const nome= requisicao.body.nome;
     const email = requisicao.body.email;
     const cidade= requisicao.body.cidade;
@@ -107,9 +107,9 @@ server.get("/lista_usuario", (requisicao, resposta)=> {
 });
 
 
-server.listen(3000, () => {
-    console.log("Servidor rodando na porta 3000");
-});
-// server.listen(porta, host, ()=>{
-//     console.log(`Servidor rodando em http://${host}:${porta}`)
+// server.listen(3000, () => {
+//     console.log("Servidor rodando na porta 3000");
 // });
+server.listen(porta, host, ()=>{
+    console.log(`Servidor rodando em http://localhost:${porta}/`)
+});
